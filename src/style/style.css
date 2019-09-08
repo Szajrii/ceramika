@@ -318,11 +318,85 @@ a:active, a:link, a:visited{
     width: 30%;
     height: 250px;
     background-color: red;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
 }
 
 .gallery-display {
     display: block !important;
-    max-height: 700px;
+    max-height: 1300px;
+}
+
+.image-zoom {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+}
+
+.image-zoom i {
+    color: white;
+    font-size: 3vw;
+    position: relative;
+    top: 42%
+}
+
+.modal-gallery {
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.6);
+    overflow: hidden;
+}
+
+.modal-image {
+    height: 80%;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    top: 10%;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-image i {
+    color: white;
+    font-size: 3vw;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.4;
+}
+#right-arrow {
+    top: 45%;
+    right: 1.5%;
+}
+#left-arrow {
+    top: 45%;
+    left: 1.5%;
+}
+#close-modal {
+    right: 1.5%;
+    top: 1.5%;
+}
+
+#right-arrow:hover, #left-arrow:hover, #close-modal:hover {
+    opacity: 1;
 }
 
 /*contact section*/
@@ -496,5 +570,6 @@ a:active, a:link, a:visited{
 }
 .nav-not-sticky{
     opacity: 0;
+    z-index: -10;
 }
 
