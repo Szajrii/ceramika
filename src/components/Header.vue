@@ -7,7 +7,7 @@
         </div>
         <div class="header-nav-wrapper main-view">
             <div class="header-nav-button" :class="{'visible' : display}">
-                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down" @click="navTo('about')"></i>
             </div>
         </div>
     </section>
@@ -21,6 +21,12 @@
             return{
                 display: false,
                 screenHeight: screen.height
+            }
+        },
+        methods: {
+            navTo(elementid) {
+                const position = document.getElementById(elementid).offsetTop;
+                window.scrollTo(0, position)
             }
         },
         mounted() {

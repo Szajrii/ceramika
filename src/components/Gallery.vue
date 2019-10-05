@@ -85,11 +85,12 @@
 
         <div class="modal-gallery" v-if="modalView">
             <div class="modal-image">
-                <i class="fas fa-times-circle" id="close-modal" @click="closeModal"></i>
+                <i class="fas fa-times" id="close-modal" @click="closeModal"></i>
                 <i class="fas fa-arrow-circle-left" id="left-arrow" @click="previousImage"></i>
-                <img :src="currentImg" alt=""> </img>
+                <img :src="currentImg" alt="">
                 <i class="fas fa-arrow-circle-right" id="right-arrow" @click="nextImage"></i>
             </div>
+            <div class="modal-background" @click="closeModal"></div>
         </div>
     </section>
 </template>
@@ -111,11 +112,13 @@
           clearZoomImage() {
               this.activeZoom = '';
           },
-          setModal() {
+          setModal(event) {
               this.modalView = true;
               let body =  document.getElementsByTagName("body");
               body[0].style.overflowY = "hidden";
               this.img = parseInt(this.activeZoom.slice(5,7));
+             // document.getElementsByClassName('modal-gallery')[0].addEventListener('click', this.closeModal);
+              //event.stopPropagation()
           },
           nextImage() {
               if(this.img < 12) {

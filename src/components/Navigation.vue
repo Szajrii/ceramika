@@ -5,16 +5,17 @@
                 <a href="">NikArt</a>
             </div>
             <div nav-items>
-                <li class="nav-item"><a href="#about">O nas</a></li>
-                <li class="nav-item"><a href="#category">Oferta</a></li>
-                <li class="nav-item"><a href="#images">Zdjęcia</a></li>
-                <li class="nav-item"><a href="#contact">Kontakt</a></li>
+                <li class="nav-item"><span @click="navTo('about')">O nas</span></li>
+                <li class="nav-item"><span @click="navTo('category')">Oferta</span></li>
+                <li class="nav-item"><span @click="navToGallery">Zdjęcia</span></li>
+                <li class="nav-item"><span @click="navTo('contact')">Kontakt</span></li>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {Eventbus} from '../eventbus/Eventbus'
     export default {
         name: "Navigation",
         data() {
@@ -45,6 +46,15 @@
                     this.isNavSticky = false
                 }
                 this.tmpScroll = window.pageYOffset;
+            },
+            navToGallery() {
+                const galleryPosition = document.getElementById('show-gallery').offsetTop;
+                window.scrollTo(0, galleryPosition);
+                Eventbus.$emit('showgallery');
+            },
+            navTo(elementid) {
+                const position = document.getElementById(elementid).offsetTop;
+                window.scrollTo(0, position)
             }
         },
         created() {

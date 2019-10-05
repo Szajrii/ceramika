@@ -17,11 +17,12 @@
                 <Carousel></Carousel>
             </div>
             <div class="small-gallery-text">
-                <p>The earliest forms of pottery were made from clays that were fired at low temperatures in pit-fires or in open bonfires. They were hand formed and undecorated.
-                    Because the biscuit form of earthenware is porous, it has limited utility for storage of liquids, however earthenware.
-                    It can be made from a wide variety of clays. The development of ceramic glaze which makes it impermeable makes it a popular and practical form of pottery making.
-                    The addition of decoration has evolved.</p>
-                <span @click="displayGallery = !displayGallery">Zobacz zdjęcia <i class="fas fa-angle-double-right" :class="{'icon-rotate' : displayGallery }"></i></span>
+                <p>Klasyczny proces produkcji wyrobów ceramicznych polega na dokładnym wymieszaniu odpowiednich surowców, formowaniu, wysuszeniu i wypaleniu.
+                    Proces wypalania odbywa się w piecach: tunelowych, komorowych lub w piecach grafitowych, często o kontrolowanej atmosferze wypalania. Temperatura wypalania mieści
+                    się w zakresie od 900 °C  do 2000 °C. W wysokich temperaturach zachodzi zjawisko spiekania, w wyniku którego otrzymuje się czerep o pożądanej gęstości, znacznie mniejszej
+                    od gęstości surowca, ze względu na usunięcie wody podczas obróbki termicznej. Dzięki wieloletniej nauce i doświadczeniu przy wykorzystaniu najlepszego sprzętu
+                jesteśmy w stanie tworzyć najlepsze wyroby ceramiczne w Miechowie.</p>
+                <span @click="displayGallery = !displayGallery" id="show-gallery">{{expandGalleryText}}<i class="fas fa-angle-double-right" :class="{'icon-rotate' : displayGallery }"></i></span>
             </div>
             <Gallery :class="{'gallery-display' : displayGallery }"></Gallery>
         </div>
@@ -31,6 +32,7 @@
 <script>
 import Carousel from './Carousel'
 import Gallery from  './Gallery'
+import {Eventbus} from '../eventbus/Eventbus'
 
     export default {
         name: "Small-Gallery",
@@ -42,6 +44,18 @@ import Gallery from  './Gallery'
             return {
                 displayGallery: false
             }
+        },
+        computed: {
+          expandGalleryText() {
+              if(this.displayGallery === false){
+                  return 'Zobacz zdjęcia'
+              }else {
+                  return 'Ukryj zdjęcia'
+              }
+          }
+        },
+        created() {
+            Eventbus.$on('showgallery', () => this.displayGallery = true)
         }
     }
 </script>

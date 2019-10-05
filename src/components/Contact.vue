@@ -42,12 +42,12 @@
                 </iframe>
             </div>
             <div class="contact-logo">
-                <a href="">
-                    <div class="contact-flex-wrapper">
+                <div class="contact-flex-wrapper">
+                    <a href="">
                         <img src="../img/logo.png" alt="">
                         <h1>NikArt</h1>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
